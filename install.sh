@@ -1,22 +1,15 @@
 #!/bin/bash
 
-pkg install golang
+# Install required packages
+echo "Installing required packages..."
+pkg install -y git golang
 
 # Clone the Koppel repository
 echo "Cloning Koppel repository..."
-pkg install git
 git clone https://github.com/TiyoNotFound/Koppel.git
 
 # Change directory to Koppel
 cd Koppel
-
-# Initialize a Go module
-echo "Initializing Go module..."
-go mod init main.go
-
-# Fetch dependencies
-echo "Fetching dependencies..."
-go get .
 
 # Build the koppel binary
 echo "Building koppel binary..."
@@ -29,12 +22,12 @@ if [ $? -ne 0 ]; then
 fi
 
 # Move the koppel binary to usr/bin
-echo "Moving koppel binary to usr/bin..."
-mv koppel /data/data/com.termux/files/usr/bin
+echo "Moving koppel binary to /data/data/com.termux/files/usr/bin..."
+mv koppel /data/data/com.termux/files/usr/bin/
 
 # Check if moving the binary was successful
 if [ $? -ne 0 ]; then
-  echo "Failed to move koppel binary to usr/bin."
+  echo "Failed to move koppel binary to /data/data/com.termux/files/usr/bin."
   exit 1
 fi
 
