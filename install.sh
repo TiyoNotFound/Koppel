@@ -11,6 +11,8 @@ git clone https://github.com/TiyoNotFound/Koppel.git
 # Change directory to Koppel
 cd Koppel
 
+go mod init main.go
+go get .
 # Build the koppel binary
 echo "Building koppel binary..."
 go build -o koppel
